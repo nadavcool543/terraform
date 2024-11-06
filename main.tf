@@ -52,11 +52,6 @@ resource "aws_s3_bucket" "netflix_app_bucket" {
   }
 }
 
-resource "aws_s3_bucket_acl" "netflix_app_bucket_acl" {
-  bucket = aws_s3_bucket.netflix_app_bucket.id
-  acl    = "private"
-}
-
 resource "aws_instance" "netflix_app" {
   ami               = "ami-06b21ccaeff8cd686"
   instance_type     = "t2.nano"
@@ -87,3 +82,4 @@ resource "aws_volume_attachment" "netflix_app_volume_attachment" {
   volume_id   = aws_ebs_volume.netflix_app_volume.id
   instance_id = aws_instance.netflix_app.id
 }
+
