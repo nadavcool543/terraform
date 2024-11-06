@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Update package index
-yum update -y
-
-# Install Amazon Linux Extras and Docker
-yum install -y amazon-linux-extras
-amazon-linux-extras enable docker
 yum install -y docker
 
 # Start Docker service
