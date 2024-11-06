@@ -47,7 +47,7 @@ resource "aws_security_group" "netflix_app_sg" {
 
 resource "aws_s3_bucket" "netflix_app_bucket" {
   bucket = "netflix-app-nadav241198"  
-  acl    = "private"
+  aws_s3_bucket_acl  = "private"
 
   tags = {
     Name = "Netflix App Bucket"
@@ -55,7 +55,7 @@ resource "aws_s3_bucket" "netflix_app_bucket" {
 }
 
 resource "aws_instance" "netflix_app" {
-  ami           = "ami-06b21ccaeff8cd686"
+  ami  = "ami-06b21ccaeff8cd686"
   instance_type = "t2.nano"
   key_name      = aws_key_pair.netflix_app_key.key_name
   availability_zone = "us-east-1a"
