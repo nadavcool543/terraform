@@ -10,7 +10,7 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "default"  # change in case you want to work with another AWS account profile
+  profile = "default"  
 }
 
 resource "aws_key_pair" "netflix_app_key" {
@@ -28,7 +28,7 @@ resource "aws_instance" "netflix_app" {
     Environment = "Development"
   }
 
-  security_groups = [aws_security_group.netflix-app-sg.name]
+  security_groups = [aws_security_group.netflix_app_sg.name]
 }
 
 resource "aws_security_group" "netflix_app_sg" {
