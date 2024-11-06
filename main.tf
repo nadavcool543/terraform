@@ -16,7 +16,7 @@ provider "aws" {
 
 resource "aws_instance" "netflix_app" {
   ami           = "ami-0866a3c8686eaeeba"
-  instance_type = "t2.micro"
+  instance_type = "t2.nano"
 
   tags = {
     Name = "Netflix App"
