@@ -15,7 +15,7 @@ provider "aws" {
 
 resource "aws_key_pair" "netflix_app_key" {
   key_name   = "netflix-app-key"  
-  public_key = file("C:/Users/nadav/OneDrive/Desktop/udemy")  
+  public_key = file("C:/Users/nadav/OneDrive/Desktop/udemy.pem")  
 }
 
 resource "aws_instance" "netflix_app" {
