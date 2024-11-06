@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
+  region  = "us-east-1a"
   profile = "default"  
 }
 
@@ -22,10 +22,12 @@ resource "aws_instance" "netflix_app" {
   ami           = "ami-06b21ccaeff8cd686"
   instance_type = "t2.nano"
   key_name      = aws_key_pair.netflix_app_key.key_name
+  availability_zone = "us-east-1a"
 
   tags = {
     Name       = "Netflix App"
     Environment = "Development"
+   
   }
 
   security_groups = [aws_security_group.netflix_app_sg.name]
