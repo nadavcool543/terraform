@@ -20,5 +20,6 @@ resource "aws_instance" "netflix_app" {
 
   tags = {
     Name = "Netflix App"
+    Enviorment = "Development"
   }
 }
