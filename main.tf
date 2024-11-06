@@ -60,8 +60,8 @@ resource "aws_s3_bucket" "netflix_app_bucket" {
 }
 
 resource "aws_instance" "netflix_app" {
-  ami               = "ami-06b21ccaeff8cd686"
-  instance_type     = "t2.medium"
+  ami               = "ami-05f16f3539e999b77"
+  instance_type     = "t4g.micro"
   key_name          = aws_key_pair.netflix_app_key.key_name
   availability_zone = "us-east-1a"
   user_data = file("C:/Users/nadav/Downloads/terraform/1user_data")
