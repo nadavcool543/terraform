@@ -44,20 +44,23 @@ resource "aws_security_group" "netflix_app_sg" {
   }
 }
 
-
 resource "aws_s3_bucket" "netflix_app_bucket" {
-  bucket = "netflix-app-nadav241198"  
-  aws_s3_bucket_acl  = "private"
+  bucket = "netflix-app-nadav241198"
 
   tags = {
     Name = "Netflix App Bucket"
   }
 }
 
+resource "aws_s3_bucket_acl" "netflix_app_bucket_acl" {
+  bucket = aws_s3_bucket.netflix_app_bucket.id
+  acl    = "private"
+}
+
 resource "aws_instance" "netflix_app" {
-  ami  = "ami-06b21ccaeff8cd686"
-  instance_type = "t2.nano"
-  key_name      = aws_key_pair.netflix_app_key.key_name
+  ami               = "ami-06b21ccaeff8cd686"
+  instance_type     = "t2.nano"
+  key_name          = aws_key_pair.netflix_app_key.key_name
   availability_zone = "us-east-1a"
 
   tags = {
