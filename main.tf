@@ -64,7 +64,7 @@ resource "aws_instance" "netflix_app" {
   instance_type     = "t4g.medium"
   key_name          = aws_key_pair.netflix_app_key.key_name
   availability_zone = "us-east-1a"
-  user_data = file("C:/Users/nadav/Downloads/terraform/user_data")
+  user_data = file("C:/Users/nadav/Downloads/terraform/1user_data")
 
   tags = {
     Name        = "Netflix App"
