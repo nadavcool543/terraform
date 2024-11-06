@@ -15,4 +15,4 @@ docker network create netflix-network
 
 # Run containers
 docker run -d --name movie-catalog --network netflix-network -p 8080:8080 orikerbis/movie-catalog
-docker run -d --name frontend --network netflix-network -p 3000:3000 -e MOVIE_CATALOG_SERVICE=http://netflix-catalog:8080 orikerbis/frontend
+docker run -d --name frontend --network netflix-network -p 3000:3000 -e MOVIE_CATALOG_SERVICE=http://movie-catalog:8080 orikerbis/frontend
