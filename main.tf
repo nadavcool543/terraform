@@ -53,10 +53,11 @@ resource "aws_s3_bucket" "netflix_app_bucket" {
 }
 
 resource "aws_instance" "netflix_app" {
-  ami               = "ami-06b21ccaeff8cd686"
-  instance_type     = "t2.nano"
+  ami               = "ami-02801556a781a4499"
+  instance_type     = "t4g.medium"
   key_name          = aws_key_pair.netflix_app_key.key_name
   availability_zone = "us-east-1a"
+  user_data = file("C:/Users/nadav/Downloads\terraform\user_data")
 
   tags = {
     Name        = "Netflix App"
@@ -66,6 +67,7 @@ resource "aws_instance" "netflix_app" {
   security_groups = [aws_security_group.netflix_app_sg.name]
 
   depends_on = [aws_s3_bucket.netflix_app_bucket]
+
 }
 
 resource "aws_ebs_volume" "netflix_app_volume" {
