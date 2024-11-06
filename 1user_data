@@ -1,18 +1,22 @@
 #!/bin/bash
+# Update packages
+yum update -y
 
+# Install Docker
 yum install -y docker
-
-# Start Docker service
-systemctl enable docker
 systemctl start docker
+systemctl enable docker
+
+# Add ec2-user to the docker group
+usermod -aG docker ec2-user
 
 # Pull Docker images
-docker pull yulianbortsov/backend
-docker pull yulianbortsov/frontend
+docker pull orikerbis/movie-catalog
+docker pull orikerbis/frontend
 
 # Create Docker network
-docker network create netflix-network
+docker network create netflix
 
 # Run containers
-docker run -d --name movie-catalog --network netflix-network -p 8080:8080 yulianbortsov/backend
-docker run -d --name frontend --network netflix-network -p 3000:3000 -e MOVIE_CATALOG_SERVICE=http://movie-catalog:8080 yulianbortsov/frontend
+docker run --name catalog -p 8080:8080 --network netflix -d orikerbis/movie-catalog
+docker run --name front -p 3000:3000 --network netflix -e MOVIE_CATALOG_SERVICE=http://catalog:8080 -d orikerbis/frontend
