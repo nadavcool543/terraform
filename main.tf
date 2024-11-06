@@ -28,11 +28,11 @@ resource "aws_instance" "netflix_app" {
     Environment = "Development"
   }
 
-  security_groups = [aws_security_group.nadav-netflix-app-sg.name]
+  security_groups = [aws_security_group.netflix-app-sg.name]
 }
 
-resource "aws_security_group" "nadav-netflix_app_sg" {
-  name        = "nadav-netflix-app-sg"   # change <your-name> accordingly
+resource "aws_security_group" "netflix_app_sg" {
+  name        = "netflix-app-sg"   
   description = "Allow SSH and HTTP traffic"
 
   ingress {
